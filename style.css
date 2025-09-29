@@ -20,7 +20,7 @@ body {
 a {
   font-weight: normal;
   text-decoration: none; 
-  color:#EF6D3D;
+  color:#b388ff;
 }
 a:focus {
   outline: thin dotted;
@@ -101,7 +101,7 @@ body {
   margin:25px auto;
 }
 header, #content, footer { 
-  background: rgba(0,0,0,.8); 
+  background: rgba(0,0,0,.78); 
   padding:25px;
   color:#FFFFFF; 
 }
@@ -129,7 +129,7 @@ ul.main-menu li a:hover {
 }
 ul.main-menu li a.active {
   color:#FFFFFF;
-  border-bottom-color:#EF6D3D;
+  border-bottom-color:#b388ff;
 }
 
 /* Utility classes */
@@ -142,3 +142,7 @@ ul.main-menu li a.active {
 
 
 
+
+
+/* Logo sizing */
+header img.logo { height: 64px; width: auto; display: block; margin-bottom: 10px; }

@@ -27,3 +27,41 @@
   });
   
 })(jQuery);
+
+
+// Auto-render reports list from REPORTS manifest (in reports.js)
+function renderReports() {
+  try {
+    if (!Array.isArray(REPORTS)) return;
+    // sort newest first by date field (YYYY-MM-DD)
+    const sorted = [...REPORTS].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    const ul = document.getElementById('report-list');
+    if (!ul) return;
+    ul.innerHTML = '';
+    sorted.forEach(r => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = r.url;
+      a.download = '';
+      a.textContent = `${r.title} (${r.date})`;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+  } catch (e) {
+    console.error('Failed to render reports', e);
+  }
+}
+
+// When the page loads or the hash changes, render the reports list once when #report is active.
+(function(){
+  let _reportsRendered = false;
+  function maybeRenderReports(){
+    const isReport = (location.hash === '#report');
+    if (!_reportsRendered && isReport) {
+      _reportsRendered = true;
+      try { renderReports(); } catch(e) { console.error('Failed to render reports', e); }
+    }
+  }
+  window.addEventListener('load', maybeRenderReports);
+  window.addEventListener('hashchange', maybeRenderReports);
+})();

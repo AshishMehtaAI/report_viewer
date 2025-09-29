@@ -61,3 +61,7 @@ Web technology changes rapidly, and it easy to get lost in the hype. Learning th
 - Big Cartel, Shopify, Etsy (e-commerce)
 
 
+
+
+## Reports manifest
+Edit `reports.js` to add reports (title, date `YYYY-MM-DD`, and URL). Place PDFs in a `reports/` folder. Links trigger download.
